@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Us</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(90deg,#6a3dd9,#5b2bd1);
+}
+
+.top{
+position:relative;
+text-align:center;
+padding-top:60px;
+}
+
+/* yellow circles */
+.circle1{
+position:absolute;
+width:220px;
+height:220px;
+background:#f7b733;
+border-radius:50%;
+top:100px;
+left:30%;
+z-index:0;
+}
+
+.circle2{
+position:absolute;
+width:220px;
+height:220px;
+background:#f7b733;
+border-radius:50%;
+top:80px;
+left:55%;
+z-index:0;
+}
+
+/* image */
+.top img{
+width:250px;
+height:250px;
+border-radius:50%;
+position:relative;
+z-index:1;
+object-fit:cover;
+}
+
+.container{
+width:800px;
+margin:40px auto;
+background:#eee;
+display:flex;
+}
+
+.left{
+width:50%;
+padding:30px;
+}
+
+.right{
+width:50%;
+padding:30px;
+background:#ddd;
+text-align:center;
+}
+
+.left h2{
+color:#6a3dd9;
+}
+
+input,textarea{
+width:100%;
+border:none;
+border-bottom:2px solid #6a3dd9;
+margin:10px 0;
+padding:8px;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#6a3dd9;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+.right h4{
+color:#6a3dd9;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="top">
+
+<div class="circle1"></div>
+<div class="circle2"></div>
+
+<img src="Scholar.jpg">
+
+</div>
+
+<div class="container">
+
+<div class="left">
+<h2>Contact Us</h2>
+
+Name
+<input type="text" placeholder="Enter your name">
+
+Email
+<input type="email" placeholder="Enter a valid email address">
+
+Message
+<textarea rows="4"></textarea>
+
+<br>
+<input type="checkbox"> I accept the Terms of Service
+<br><br>
+
+<button>SUBMIT</button>
+</div>
+
+<div class="right">
+
+<h4>CALL US</h4>
+<p>1 (234) 567-891<br>1 (234) 987-654</p>
+
+<h4>LOCATION</h4>
+<p>121 Rock Street, 21 Avenue,<br>New York, NY</p>
+
+<h4>OUR TOP SERVICES</h4>
+<p>Self-Studying<br>Online Courses<br>Challenge Yourself</p>
+</div>
+</div>
+</body>
+</html>

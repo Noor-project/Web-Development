@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Validation</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#4a73d9;
+}
+
+.container{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-top:80px;
+}
+
+.left{
+    color:white;
+    font-size:40px;
+    font-weight:bold;
+}
+
+.form-box{
+    background:white;
+    padding:20px;
+    width:300px;
+    border-radius:8px;
+}
+
+input{
+    width:100%;
+    padding:8px;
+    margin:8px 0;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#4a73d9;
+    color:white;
+    border:none;
+}
+
+.error{
+    color:red;
+    font-size:12px;
+}
+</style>
+
+<script>
+function validateForm(){
+
+let email=document.getElementById("email").value;
+let pass=document.getElementById("pass").value;
+let cpass=document.getElementById("cpass").value;
+
+let emailError="";
+let passError="";
+let cpassError="";
+
+if(!email.includes("@")){
+emailError="Please enter a valid email address";
+}
+
+if(pass.length<8){
+passError="Password must be at least 8 characters";
+}
+
+if(pass!=cpass){
+cpassError="Password don't match";
+}
+
+document.getElementById("emailError").innerHTML=emailError;
+document.getElementById("passError").innerHTML=passError;
+document.getElementById("cpassError").innerHTML=cpassError;
+
+if(emailError=="" && passError=="" && cpassError==""){
+alert("Form Submitted");
+return true;
+}
+
+return false;
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left">
+Form<br>
+Validation<br>
+JavaScript
+</div>
+
+<div class="form-box">
+<h3>Signup</h3>
+
+<form onsubmit="return validateForm()">
+
+<input type="text" id="email" placeholder="Enter Email">
+<div id="emailError" class="error"></div>
+
+<input type="password" id="pass" placeholder="Enter Password">
+<div id="passError" class="error"></div>
+
+<input type="password" id="cpass" placeholder="Confirm Password">
+<div id="cpassError" class="error"></div>
+
+<br>
+<button>Signup Now</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>
+```

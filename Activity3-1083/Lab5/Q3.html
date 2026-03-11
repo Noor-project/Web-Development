@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(1, 108, 141); color:white;">
+<h1 align="center">Application Form</h1>
+<form>
+<table cellpadding="8">
+
+<tr>
+    <td>First name:</td>
+    <td>
+        <input type="text" name="first_name" /> 
+    </td>
+    <td>Last name:</td>
+    <td>
+        <input type="text" name="last_name" /> 
+    </td>
+</tr>
+<tr>
+    <td>Date of Birth:</td>
+    <td><input type="date" name="dob" /></td>
+    <td>Age:</td>
+    <td><input type="number" name="age" /></td>
+</tr>
+<tr>
+    <td>Gender:</td>
+    <td>
+        <select name="gender">
+            <option value="Male">Male</option>           
+            <option value="Female">Female</option>
+        </select>
+    </td>
+    <td>Email Address:</td>
+    <td>
+        <input type="text" name="email_address" value="Enter your email"/>
+    </td>
+</tr>
+<tr>
+<td>Positions Available:</td>
+<td>
+<input type="radio" name="Position" value="Junior Developer"/> Junior Developer
+<input type="radio" name="Position" value="Mid Level Developer"/> Mid Level Developer
+<input type="radio" name="Position" value="Senior Developer"/> Senior Developer
+</td>
+</tr>
+
+<tr>
+    <td>Programming Languages:</td>
+    <td>
+        Java <input name="Programming" value="Java" type="checkbox"/>
+        JavaScript<input type="checkbox" name="Programming" value="JavaScript" />
+        Python <input type="checkbox" name="Programming" value="Python" />
+    </td>
+</tr>
+<tr>
+    <td>
+       Password:
+        <td><input type="password" name="password"/></td>
+        <td>Confirm Password:</td>
+        <td><input type="password" name="confirm_password"/></td>
+    </td>
+</tr>
+</table>
+<br><br>
+<p align="center">
+    <input style="background-color: orange;" type="submit" value="Submit"/>
+    <input style="background-color: orange;" type="reset" value="Reset"/>
+</p>
+
+</form>
+
+</body>
+</html>

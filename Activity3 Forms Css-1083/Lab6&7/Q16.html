@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ABC Hotel Booking</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #d8d1cd;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 80px; /* Space between the image section and form */
+        max-width: 1000px;
+        width: 100%;
+        padding: 40px;
+    }
+
+    /* --- Image Section with Large Half-Circle --- */
+    .image-area {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* The Large Circle (Adha Circle effect) */
+    .big-orange-circle {
+        position: absolute;
+        width: 450px; /* Very large circle */
+        height: 450px;
+        border: 15px solid #f47a3c; /* Thick orange border */
+        border-radius: 50%;
+        /* Positioning it so only half/part of it frames the image */
+        left: -50px; 
+        z-index: 1;
+        /* Using clip-path or simple overflow to make it look "half" */
+        opacity: 0.8;
+    }
+
+    .main-img {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 8px solid white;
+        position: relative;
+        z-index: 2; /* Sits on top of the circle */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* --- Form Section --- */
+    .form-box {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        width: 350px;
+        z-index: 3;
+    }
+
+    h2 {
+        margin-top: 0;
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-size: 12px;
+        font-weight: bold;
+        color: #777;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+        .container {
+            flex-direction: column;
+            gap: 50px;
+        }
+        .big-orange-circle {
+            width: 350px;
+            height: 350px;
+            left: 25px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="image-area">
+        <div class="big-orange-circle"></div>
+        <img src="food.png" alt="Hotel Food" class="main-img">
+    </div>
+
+    <div class="form-box">
+        <h2>Book Your Table</h2>
+        <form>
+            <div class="input-group">
+                <label>Phone</label>
+                <input type="text" placeholder="Enter your phone">
+            </div>
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" placeholder="Enter your name">
+            </div>
+            <div class="input-group">
+                <label>Date</label>
+                <input type="text" placeholder="MM/DD/YYYY">
+            </div>
+            <div class="input-group">
+                <label>Message</label>
+                <textarea rows="3" placeholder="Enter your message"></textarea>
+            </div>
+            <button type="submit">SUBMIT</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

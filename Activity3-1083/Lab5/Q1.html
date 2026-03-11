@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(111, 111, 244); color:white;">
+
+<form>
+<table cellpadding="8">
+
+<tr>
+    <td>First name:</td>
+    <td>
+        <input type="text" name="first_name" /> 
+        (max 30 characters a-z and A-Z)
+    </td>
+</tr>
+
+<tr>
+    <td>Last name:</td>
+    <td>
+        <input type="text" name="last_name" /> 
+        (max 30 characters a-z and A-Z)
+    </td>
+</tr>
+
+<tr>
+    <td>Date of Birth:</td>
+    <td><input type="date" name="dob" /></td>
+</tr>
+
+<tr>
+    <td>Email ID:</td>
+    <td><input type="text" name="email" /></td>
+</tr>
+
+<tr>
+    <td>Mobile Number:</td>
+    <td>
+        <input type="text" name="mobile" />
+        (10 digit number)
+    </td>
+</tr>
+
+<tr>
+    <td>Gender:</td>
+    <td>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+    </td>
+</tr>
+
+<tr>
+    <td>Address:</td>
+    <td>
+        <textarea cols="40" rows="5" name="address"></textarea>
+    </td>
+</tr>
+
+<tr>
+    <td>City:</td>
+    <td>
+        <input type="text" name="city" />
+        (max 30 characters a-z and A-Z)
+    </td>
+</tr>
+
+<tr>
+    <td>Pincode:</td>
+    <td>
+        <input type="text" name="pincode" />
+        (6 digit number)
+    </td>
+</tr>
+
+<tr>
+    <td>State:</td>
+    <td>
+        <input type="text" name="state" />
+        (max 30 characters a-z and A-Z)
+    </td>
+</tr>
+
+<tr>
+    <td>Country:</td>
+    <td>
+        <input type="text" name="country" value="India" />
+    </td>
+</tr>
+
+<tr>
+    <td>Hobbies:</td>
+    <td>
+        Drawing <input name="hobbies" value="Drawing" type="checkbox"/>
+        Singing <input type="checkbox" name="hobbies" value="Singing" />
+        Dancing <input type="checkbox" name="hobbies" value="Dancing" />
+        Sketching <input type="checkbox" name="hobbies" value="Sketching" />
+        <br><br>
+        Others <input name="others" type="checkbox"/>
+        <input type="text"/>
+    </td>
+</tr>
+
+</table>
+
+<br><br>
+<table>
+<tr>
+    <td>Qualification</td>
+    <td>Sr.No.Examination</td>
+    <td align="center"> Board </td>
+    <td>Year of Passing</td>
+    <td>Percentage</td>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>Class X</td>
+    <td><input type="text" name="classX_board" /></td>
+    <td><input type="text" name="classX_year" /></td>
+    <td><input type="text" name="classX_percentage" /></td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>Class XII</td>
+    <td><input type="text" name="classXII_board" /></td>
+    <td><input type="text" name="classXII_year" /></td>
+    <td><input type="text" name="classXII_percentage" /></td>
+</tr>
+
+<tr>
+    <td>3</td>
+    <td>Graduation</td>
+    <td><input type="text" name="graduation_board" /></td>
+    <td><input type="text" name="graduation_year" /></td>
+    <td><input type="text" name="graduation_percentage" /></td>
+</tr>
+
+<tr>
+    <td>4</td>
+    <td>Master</td>
+    <td><input type="text" name="master_board" /></td>
+    <td><input type="text" name="master_year" /></td>
+    <td><input type="text" name="master_percentage" /></td>
+</tr>
+
+</table>
+
+<br><br>
+courses applied for:
+<input type="radio" name="course" value="BCA"/> BCA
+<input type="radio" name="course" value="BBA"/> BBA
+<input type="radio" name="course" value="BSC"/> BSC
+<input type="radio" name="course" value="BA"/> BA
+<br><br>
+<input type="submit" value="Submit"/>
+<input type="reset" value="Reset"/>
+
+</form>
+
+</body>
+</html>

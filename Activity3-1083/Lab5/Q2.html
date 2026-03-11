@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body  align="center">
+<form>
+<table align="center"cellpadding="8">
+<h>Novell Service Login</h>
+<tr>
+    <br><br>
+    <td>Username</td>
+    <td>
+        <input type="text" name="username" /> 
+    </td>
+</tr>
+<tr>
+    <td>Password:</td>
+    <td><input type="password" name="password" /></td>
+  </tr> 
+<tr>
+    <td>City of Employment</td>
+    <td><input type="text" name="city_of_employment" /></td>
+</tr>
+<tr>
+    <td>Web Servers</td>
+   <td> <select name="Web_Servers">
+         <option value="select">Select a Web Server</option>
+        <option value="html">HTML</option>
+        <option value="php">PHP</option>
+        <option value="python">Python</option>  
+    </select>
+    </td>
+  </tr> 
+  <tr>
+    <td>Please Specify your Role</td>
+    <td>    
+        <input type="radio" name="role" value="Admin" /> Admin
+        <br>
+        <input type="radio" name="role" value="Engineer" /> Engineer
+        <br>
+        <input type="radio" name="role" value="Manager" /> Manager
+        <br>
+        <input type="radio" name="role" value="Guest" /> Guest
+    </td>
+  </tr>
+  
+  <tr>
+    <td>Single sign on following</td>
+    <td>
+    <input type="checkbox" name="single_sign_on_following" value="mail" /> Mail
+    <br>
+    <input type="checkbox" name="single_sign_on_following" value="payrole" /> Payrole
+    <br>
+    <input type="checkbox" name="single_sign_on_following" value="self_service" /> Self Service
+    </td>
+</tr>
+</table>
+<br><br>
+    <input style="width:auto;" type="submit" value="Login"/>
+    <input style="width:auto;" type="reset" value="Reset"/>
+
+</form>
+
+</body>
+</html>

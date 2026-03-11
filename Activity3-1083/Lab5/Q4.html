@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+</head>
+<body>
+
+<h1 align="center">User Registration</h1>
+
+<form>
+
+<table align="center" cellpadding="5">
+
+    <!-- Personal Details Section -->
+    <tr>
+        <td colspan="2"><b>Personal Details</b></td>
+    </tr>
+    <tr>
+        <td>
+            Full Name:
+            <input type="text" name="full_name">
+
+            &nbsp;&nbsp;
+
+            Email:
+            <input type="email" name="email">
+
+            &nbsp;&nbsp;
+
+            Age:
+            <input type="number" name="age">
+        </td>
+    </tr>
+
+    <tr><td><br></td></tr>
+
+    <!-- Account Preferences Section -->
+    <tr>
+        <td><b>Account Preferences</b></td>
+    </tr>
+    <tr>
+        <td>
+            Preferred Programming Language:
+            <input type="radio" name="language" value="python"> Python
+            <input type="radio" name="language" value="javascript"> JavaScript
+            <br><br>
+            Skills:
+            <input type="checkbox" name="skills" value="web"> Web Development
+            <input type="checkbox" name="skills" value="data"> Data Science
+        </td>
+    </tr>
+
+    <tr><td><br></td></tr>
+
+    <!-- Additional Information Section -->
+    <tr>
+        <td><b>Additional Information</b></td>
+    </tr>
+    <tr>
+        <td>
+            Comments:<br><br>
+            <textarea name="comments" rows="5" cols="60"></textarea>
+        </td>
+    </tr>
+
+    <tr><td><br></td></tr>
+
+    <tr>
+        <td align="center">
+            <input type="submit" value="Register">
+            <input type="reset" value="Clear Form">
+        </td>
+    </tr>
+
+</table>
+
+</form>
+
+</body>
+</html>
