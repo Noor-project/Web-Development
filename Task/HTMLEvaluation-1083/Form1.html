@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+
+    .input-field {
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid rgba(255,255,255,0.35);
+      outline: none;
+      width: 100%;
+      padding: 6px 0;
+      color: white;
+      font-size: 0.875rem;
+      transition: border-color 0.2s;
+    }
+    .input-field::placeholder { color: rgba(255,255,255,0.7); font-size: 0.875rem; }
+    .input-field:focus { border-bottom-color: white; }
+
+    .input-field-light {
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid rgba(59,130,246,0.3);
+      outline: none;
+      width: 100%;
+      padding: 6px 0;
+      color: #1e3a5f;
+      font-size: 0.875rem;
+      transition: border-color 0.2s;
+    }
+    .input-field-light::placeholder { color: #6b93c4; font-size: 0.875rem; }
+    .input-field-light:focus { border-bottom-color: #3b82f6; }
+
+    select.input-field { cursor: pointer; }
+    select.input-field-light { cursor: pointer; }
+
+    select option { background: #1e3a5f; color: white; }
+
+    .custom-radio {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid white;
+      border-radius: 50%;
+      flex-shrink: 0;
+      cursor: pointer;
+      position: relative;
+      margin-top: 2px;
+      transition: background 0.2s;
+    }
+    .custom-radio:checked {
+      background: white;
+      box-shadow: inset 0 0 0 3px #4f46e5;
+    }
+
+    .bg-gradient-card {
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 100%);
+    }
+
+    .register-btn {
+      background: white;
+      color: #4338ca;
+      font-weight: 600;
+      padding: 10px 32px;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+      transition: transform 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+    .register-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .register-btn:active { transform: translateY(0); }
+
+    .card-shadow {
+      box-shadow: 0 20px 60px rgba(79, 70, 229, 0.18), 0 4px 16px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6"
+  style="background: linear-gradient(135deg, #a8c0e8 0%, #c4d4f0 40%, #b8caee 100%);">
+
+  <!-- Card -->
+  <div class="flex rounded-2xl overflow-hidden card-shadow w-full max-w-2xl">
+
+    <!-- LEFT: General Information -->
+    <div class="bg-gradient-card w-1/2 p-8 flex flex-col gap-6">
+      <h2 class="text-blue-600 font-semibold text-lg tracking-wide" style="font-family:'DM Serif Display', serif;">
+        General Infomation
+      </h2>
+
+      <!-- Title -->
+      <div>
+        <select class="input-field-light">
+          <option value="" disabled selected>Title</option>
+          <option>Mr.</option>
+          <option>Ms.</option>
+          <option>Dr.</option>
+          <option>Prof.</option>
+        </select>
+      </div>
+
+      <!-- First + Last Name -->
+      <div class="flex gap-4">
+        <div class="flex-1">
+          <input type="text" placeholder="First Name" class="input-field-light" />
+        </div>
+        <div class="flex-1">
+          <input type="text" placeholder="Last Name" class="input-field-light" />
+        </div>
+      </div>
+
+      <!-- Position -->
+      <div>
+        <select class="input-field-light">
+          <option value="" disabled selected>Position</option>
+          <option>Manager</option>
+          <option>Developer</option>
+          <option>Designer</option>
+          <option>Analyst</option>
+          <option>Director</option>
+        </select>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <input type="text" placeholder="Company" class="input-field-light" />
+      </div>
+
+      <!-- Business Arena + Employees -->
+      <div class="flex gap-4">
+        <div class="flex-1">
+          <input type="text" placeholder="Business Arena" class="input-field-light" />
+        </div>
+        <div class="flex-1">
+          <select class="input-field-light">
+            <option value="" disabled selected>Employees</option>
+            <option>1–10</option>
+            <option>11–50</option>
+            <option>51–200</option>
+            <option>200+</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Contact Details -->
+    <div class="w-1/2 p-8 flex flex-col gap-5"
+      style="background: linear-gradient(160deg, #5b5bd6 0%, #4338ca 60%, #3730a3 100%);">
+      <h2 class="text-white font-semibold text-lg tracking-wide" style="font-family:'DM Serif Display', serif;">
+        Contact Details
+      </h2>
+
+      <!-- Street + Nr -->
+      <div>
+        <input type="text" placeholder="Street + Nr" class="input-field" />
+      </div>
+
+      <!-- Additional Info -->
+      <div>
+        <input type="text" placeholder="Additional Information" class="input-field" />
+      </div>
+
+      <!-- Zip Code + Place -->
+      <div class="flex gap-4">
+        <div class="flex-1">
+          <input type="text" placeholder="Zip Code" class="input-field" />
+        </div>
+        <div class="flex-1">
+          <select class="input-field">
+            <option value="" disabled selected>Place</option>
+            <option>City A</option>
+            <option>City B</option>
+            <option>City C</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Country -->
+      <div>
+        <select class="input-field">
+          <option value="" disabled selected>Country</option>
+          <option>Germany</option>
+          <option>USA</option>
+          <option>UK</option>
+          <option>France</option>
+          <option>Pakistan</option>
+        </select>
+      </div>
+
+      <!-- Code + Phone -->
+      <div class="flex gap-4">
+        <div style="width:30%">
+          <input type="text" placeholder="Code +" class="input-field" />
+        </div>
+        <div class="flex-1">
+          <input type="tel" placeholder="Phone Number" class="input-field" />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <input type="email" placeholder="Your Email" class="input-field" />
+      </div>
+
+      <!-- Terms -->
+      <div class="flex items-start gap-3 mt-1">
+        <input type="radio" class="custom-radio" id="terms" name="terms" />
+        <label for="terms" class="text-white text-xs leading-relaxed cursor-pointer">
+          I do accept the
+          <a href="#" class="underline font-semibold hover:opacity-80 transition-opacity">Terms and Conditions</a>
+          of your site.
+        </label>
+      </div>
+
+      <!-- Button -->
+      <div class="mt-1">
+        <button class="register-btn">Register Badge</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

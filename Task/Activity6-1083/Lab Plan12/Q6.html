@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Q6 - 2D Array Sum</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white rounded-lg shadow-lg p-8 w-96">
+    <h2 class="font-bold text-base mb-4">Enter Ten values:</h2>
+
+    <input
+      type="text"
+      id="display"
+      readonly
+      placeholder=""
+      class="w-full border border-blue-400 px-3 py-2 text-sm mb-5 outline-none bg-white"
+    />
+
+    <div class="flex justify-end gap-3">
+      <button
+        onclick="collectValues()"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-1.5 rounded text-sm">
+        OK
+      </button>
+      <button
+        onclick="cancelAll()"
+        class="text-blue-500 hover:underline text-sm px-2">
+        Cancel
+      </button>
+    </div>
+
+    <!-- Result display -->
+    <div id="result" class="hidden mt-5 bg-gray-50 border border-gray-200 rounded p-3 text-sm font-mono"></div>
+  </div>
+
+  <script>
+    // 2D array: 2 rows x 5 columns
+    function collectValues() {
+      const values = [];
+
+      for (let i = 0; i < 10; i++) {
+        const input = prompt(`Enter value ${i + 1} of 10:`);
+        if (input === null) {
+          alert('Cancelled.');
+          return;
+        }
+        const num = parseFloat(input);
+        if (isNaN(num)) {
+          alert(`Invalid input at position ${i + 1}. Please enter a number.`);
+          return;
+        }
+        values.push(num);
+      }
+
+      // Store into 2D array (2 rows × 5 cols)
+      const arr2D = [
+        [values[0], values[1], values[2], values[3], values[4]],
+        [values[5], values[6], values[7], values[8], values[9]]
+      ];
+
+      // Display values in input box
+      document.getElementById('display').value = values.join(', ');
+
+      // Calculate sum
+      let sum = 0;
+      arr2D.forEach(row => row.forEach(v => sum += v));
+
+      // Display result
+      const res = document.getElementById('result');
+      res.innerHTML =
+        `<p><b>2D Array:</b></p>
+         <p>Row 1: [${arr2D[0].join(', ')}]</p>
+         <p>Row 2: [${arr2D[1].join(', ')}]</p>
+         <p class="mt-2 text-green-700 font-bold">Total Sum = ${sum}</p>
+         <p class="text-gray-500 text-xs mt-1">Series: ${values.map((v,i)=>(i+1)*5).join(', ')} pattern check: Sum = ${sum}</p>`;
+      res.classList.remove('hidden');
+    }
+
+    function cancelAll() {
+      document.getElementById('display').value = '';
+      document.getElementById('result').classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>

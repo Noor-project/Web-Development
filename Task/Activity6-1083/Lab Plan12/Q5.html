@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Q5 - Triangle Area (½bh)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen">
+
+  <div class="text-center w-72">
+
+    <!-- Triangle SVG -->
+    <svg width="120" height="100" viewBox="0 0 120 100" class="mx-auto mb-2">
+      <polygon points="60,5 10,95 110,95" fill="none" stroke="black" stroke-width="2"/>
+      <!-- height line -->
+      <line x1="60" y1="5" x2="60" y2="95" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+      <text x="63" y="50" font-size="11" fill="black">h</text>
+      <text x="55" y="108" font-size="11" fill="black">b</text>
+    </svg>
+
+    <p class="text-sm font-bold mb-4">
+      Enter the width and height of your triangle to calculate the area
+    </p>
+
+    <!-- Width -->
+    <div class="flex items-center justify-center gap-3 mb-2">
+      <label class="text-sm font-semibold w-24 text-right">Width (b):</label>
+      <input type="number" id="base"
+        class="border border-gray-400 px-2 py-1 w-28 text-sm outline-none"/>
+    </div>
+    <p id="bErr" class="text-red-500 text-xs mb-2 hidden">⚠ Enter width (b).</p>
+
+    <!-- Height -->
+    <div class="flex items-center justify-center gap-3 mb-2">
+      <label class="text-sm font-semibold w-24 text-right">Height (h):</label>
+      <input type="number" id="height"
+        class="border border-gray-400 px-2 py-1 w-28 text-sm outline-none"/>
+    </div>
+    <p id="hErr" class="text-red-500 text-xs mb-3 hidden">⚠ Enter height (h).</p>
+
+    <!-- Button -->
+    <button
+      onclick="calcArea()"
+      class="border border-gray-500 bg-gray-100 hover:bg-gray-200 px-5 py-1.5 text-sm rounded">
+      Calculate area
+    </button>
+
+    <p id="result" class="mt-4 text-sm font-semibold"></p>
+  </div>
+
+  <script>
+    function calcArea() {
+      document.getElementById('bErr').classList.add('hidden');
+      document.getElementById('hErr').classList.add('hidden');
+
+      const b = document.getElementById('base').value.trim();
+      const h = document.getElementById('height').value.trim();
+
+      let valid = true;
+      if (b === '' || isNaN(b) || parseFloat(b) <= 0) {
+        document.getElementById('bErr').classList.remove('hidden'); valid = false;
+      }
+      if (h === '' || isNaN(h) || parseFloat(h) <= 0) {
+        document.getElementById('hErr').classList.remove('hidden'); valid = false;
+      }
+      if (!valid) return;
+
+      const area = 0.5 * parseFloat(b) * parseFloat(h);
+      document.getElementById('result').textContent = `Area of Triangle = ${area.toFixed(2)}`;
+    }
+  </script>
+
+</body>
+</html>

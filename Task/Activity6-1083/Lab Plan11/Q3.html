@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Q3 - Armstrong Number</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+<div class="border-4 border-blue-600 rounded-lg p-6 max-w-md w-full shadow-lg bg-white">
+  <div class="mb-2">
+    <input
+      type="number"
+      id="num-input"
+      placeholder="Three Digit Positive integer"
+      min="100"
+      max="999"
+      class="w-full bg-gray-100 text-white rounded-xl px-4 py-2.5 font-mono outline-none border border-gray-600 focus:border-purple-400 transition"
+    />
+    <p id="num-err" class="text-red-400 text-sm mt-1 hidden">⚠ Please enter a valid 3-digit number (100 – 999).</p>
+  </div>
+
+  <div class="flex gap-3 mt-5">
+    <button onclick="checkArmstrong()"
+      class="flex-1 bg-purple-500 hover:bg-purple-400 text-white font-bold py-2.5 rounded-xl transition">
+      Ok
+    </button>
+    <button onclick="clearForm()"
+      class="flex-1 border border-gray-600 hover:border-purple-400 text-gray-400 hover:text-purple-400 font-bold py-2.5 rounded-xl transition">
+      Cancel
+    </button>
+  </div>
+
+  <!-- Result -->
+  <div id="result" class="hidden mt-5 bg-gray-900 rounded-xl p-4 border border-gray-700 space-y-2">
+    <p id="calc-text" class="text-gray-400 text-sm font-mono"></p>
+    <p id="result-text" class="text-xl font-bold"></p>
+  </div>
+</div>
+
+<script>
+function checkArmstrong() {
+  const input = document.getElementById('num-input');
+  const errEl = document.getElementById('num-err');
+  const resultDiv = document.getElementById('result');
+
+  errEl.classList.add('hidden');
+  resultDiv.classList.add('hidden');
+
+  const val = input.value.trim();
+  const n = parseInt(val);
+
+  if (val === '' || isNaN(n) || n < 100 || n > 999) {
+    errEl.classList.remove('hidden');
+    return;
+  }
+
+  const digits = val.split('').map(Number);
+  const d1 = digits[0], d2 = digits[1], d3 = digits[2];
+  const sum = Math.pow(d1, 3) + Math.pow(d2, 3) + Math.pow(d3, 3);
+  const isArm = sum === n;
+
+  document.getElementById('calc-text').textContent =
+    `${d1}³ + ${d2}³ + ${d3}³ = ${d1**3} + ${d2**3} + ${d3**3} = ${sum}`;
+
+  const resultText = document.getElementById('result-text');
+  if (isArm) {
+    resultText.textContent = `✅ ${n} is an Armstrong Number!`;
+    resultText.className = 'text-xl font-bold text-green-400';
+  } else {
+    resultText.textContent = `❌ ${n} is NOT an Armstrong Number.`;
+    resultText.className = 'text-xl font-bold text-red-400';
+  }
+
+  resultDiv.classList.remove('hidden');
+}
+
+function clearForm() {
+  document.getElementById('num-input').value = '';
+  document.getElementById('num-err').classList.add('hidden');
+  document.getElementById('result').classList.add('hidden');
+}
+</script>
+</body>
+</html>

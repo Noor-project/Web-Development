@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Q3 - Odd or Even</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glow-input:focus {
+      outline: none;
+      border-color: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.3), 0 0 12px rgba(34,197,94,0.4);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-xl shadow-md w-96">
+    <label class="block mb-1 font-medium">Starting Number</label>
+    <input id="n1" type="text" placeholder="Enter only Numeric Value"
+      class="glow-input w-full border-2 border-gray-300 rounded-lg px-4 py-2 mb-4">
+
+    <label class="block mb-1 font-medium">Ending Number <span class="text-sm text-red-400">(must be greater than start)</span></label>
+    <input id="n2" type="text" placeholder="Enter only Numeric Value"
+      class="glow-input w-full border-2 border-gray-300 rounded-lg px-4 py-2 mb-6">
+
+  <div class="flex flex-col space-y-4">
+  <button onclick="checkOddEven()"
+    class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-lg">
+    Check
+  </button>
+  <button onclick="resetForm()"
+    class="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 rounded-lg">
+    Cancel
+  </button>
+</div>
+
+    <div id="result" class="mt-6 max-h-60 overflow-y-auto hidden"></div>
+  </div>
+
+  <script>
+    function checkOddEven() {
+      var a = document.getElementById('n1').value.trim();
+      var b = document.getElementById('n2').value.trim();
+
+      if (a === '' || b === '') {
+        alert('Please fill all fields!');
+        return;
+      }
+      if (isNaN(a) || isNaN(b)) {
+        alert('Enter numeric values only!');
+        return;
+      }
+
+      a = parseInt(a); b = parseInt(b);
+
+      if (b <= a) {
+        alert('End number must be greater than start number!');
+        return;
+      }
+
+      var html = '';
+      for (var i = a; i <= b; i++) {
+        if (i % 2 === 0) {
+          html += '<p class="text-blue-600 font-medium">' + i + ' is Even</p>';
+        } else {
+          html += '<p class="text-pink-600 font-medium">' + i + ' is Odd</p>';
+        }
+      }
+
+      var result = document.getElementById('result');
+      result.innerHTML = html;
+      result.classList.remove('hidden');
+    }
+
+    function resetForm() {
+      document.getElementById('n1').value = '';
+      document.getElementById('n2').value = '';
+      var result = document.getElementById('result');
+      result.innerHTML = '';
+      result.classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

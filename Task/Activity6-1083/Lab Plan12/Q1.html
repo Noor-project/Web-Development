@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Q1 - Distance Converter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen">
+
+  <div class="text-center">
+    <!-- Two Dropdowns -->
+    <div class="flex gap-4 justify-center mb-4">
+      <select id="fromUnit" class="border border-gray-400 px-3 py-2 text-sm w-36">
+        <option value="km">Kilometer</option>
+        <option value="cm">Centimeter</option>
+        <option value="mile">Mile</option>
+        <option value="meter">Meter</option>
+      </select>
+
+      <select id="toUnit" class="border border-gray-400 px-3 py-2 text-sm w-36">
+        <option value="km">Kilometer</option>
+        <option value="cm">Centimeter</option>
+        <option value="mile">Mile</option>
+        <option value="meter">Meter</option>
+      </select>
+    </div>
+
+    <!-- Input and Answer -->
+    <div class="flex gap-4 justify-center mb-4">
+      <input
+        type="number"
+        id="inputVal"
+        placeholder="Enter a value"
+        class="border border-gray-300 px-3 py-1.5 text-sm w-36 outline-none focus:border-blue-400"
+      />
+      <input
+        type="text"
+        id="answerVal"
+        placeholder="Answer"
+        readonly
+        class="border border-gray-300 px-3 py-1.5 text-sm w-36 bg-gray-50 text-gray-600"
+      />
+    </div>
+
+    <p id="err" class="text-red-500 text-sm mb-2 hidden">⚠ Please enter a value.</p>
+
+    <!-- Button -->
+    <button
+      onclick="convertDistance()"
+      class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-2 rounded">
+      Conversion
+    </button>
+  </div>
+
+  <script>
+    // Conversion to meters as base unit
+    const toMeter = { km: 1000, cm: 0.01, mile: 1609.34, meter: 1 };
+
+    function convertDistance() {
+      const err = document.getElementById('err');
+      const val = document.getElementById('inputVal').value.trim();
+      err.classList.add('hidden');
+
+      if (val === '' || isNaN(val)) {
+        err.classList.remove('hidden');
+        return;
+      }
+
+      const from = document.getElementById('fromUnit').value;
+      const to   = document.getElementById('toUnit').value;
+      const inMeters = parseFloat(val) * toMeter[from];
+      const result   = inMeters / toMeter[to];
+
+      document.getElementById('answerVal').value = result.toFixed(4);
+    }
+  </script>
+
+</body>
+</html>

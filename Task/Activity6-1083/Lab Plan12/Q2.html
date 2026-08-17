@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Q2 - Swap Values</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen">
+
+  <div class="w-80">
+
+    <!-- Inputs -->
+    <input
+      type="number"
+      id="val1"
+      placeholder="Enter First Value"
+      class="w-full border-2 border-blue-400 px-4 py-3 mb-3 text-sm outline-none focus:border-blue-600"
+    />
+    <p id="err1" class="text-red-500 text-xs mb-2 hidden">⚠ First field is empty or invalid (positive 3-digit only).</p>
+
+    <input
+      type="number"
+      id="val2"
+      placeholder="Enter Second Value"
+      class="w-full border-2 border-blue-400 px-4 py-3 mb-4 text-sm outline-none focus:border-blue-600"
+    />
+    <p id="err2" class="text-red-500 text-xs mb-3 hidden">⚠ Second field is empty or invalid (positive 3-digit only).</p>
+
+    <!-- Radio Options -->
+    <div class="space-y-2 mb-5 pl-2">
+      <label class="flex items-center gap-3 cursor-pointer font-semibold text-sm">
+        <input type="radio" name="swapMethod" value="third" class="w-4 h-4"/> Using Third Variable
+      </label>
+      <label class="flex items-center gap-3 cursor-pointer font-semibold text-sm">
+        <input type="radio" name="swapMethod" value="nothird" class="w-4 h-4"/> Without Third Variable
+      </label>
+      <label class="flex items-center gap-3 cursor-pointer font-semibold text-sm">
+        <input type="radio" name="swapMethod" value="plus" class="w-4 h-4"/> Using +, - Operator
+      </label>
+      <label class="flex items-center gap-3 cursor-pointer font-semibold text-sm">
+        <input type="radio" name="swapMethod" value="mult" class="w-4 h-4"/> Using * , / Operator
+      </label>
+    </div>
+    <p id="optErr" class="text-red-500 text-xs mb-3 hidden">⚠ Please select a swap method.</p>
+
+    <!-- Button -->
+    <button
+      onclick="swapValues()"
+      class="w-full bg-rose-700 hover:bg-rose-800 text-white font-bold py-3 rounded">
+      Sawping Value
+    </button>
+
+    <!-- Result -->
+    <div id="result" class="hidden mt-4 bg-gray-100 border border-gray-300 rounded p-3 text-sm font-mono text-center">
+    </div>
+
+  </div>
+
+  <script>
+    function isValid(val) {
+      const n = parseInt(val);
+      return val !== '' && !isNaN(n) && n >= 100 && n <= 999;
+    }
+
+    function swapValues() {
+      const v1El = document.getElementById('val1');
+      const v2El = document.getElementById('val2');
+      const err1 = document.getElementById('err1');
+      const err2 = document.getElementById('err2');
+      const optErr = document.getElementById('optErr');
+      const result = document.getElementById('result');
+
+      err1.classList.add('hidden');
+      err2.classList.add('hidden');
+      optErr.classList.add('hidden');
+      result.classList.add('hidden');
+
+      let valid = true;
+      if (!isValid(v1El.value.trim())) { err1.classList.remove('hidden'); valid = false; }
+      if (!isValid(v2El.value.trim())) { err2.classList.remove('hidden'); valid = false; }
+      if (!valid) return;
+
+      const method = document.querySelector('input[name="swapMethod"]:checked');
+      if (!method) { optErr.classList.remove('hidden'); return; }
+
+      let a = parseInt(v1El.value);
+      let b = parseInt(v2El.value);
+      const origA = a, origB = b;
+
+      if (method.value === 'third') {
+        let temp = a; a = b; b = temp;
+      } else if (method.value === 'nothird') {
+        a = a + b - (b = a);
+      } else if (method.value === 'plus') {
+        a = a + b;
+        b = a - b;
+        a = a - b;
+      } else if (method.value === 'mult') {
+        a = a * b;
+        b = a / b;
+        a = a / b;
+      }
+
+      result.innerHTML =
+        `Before: A = ${origA}, B = ${origB}<br>
+         After Swap: A = ${a}, B = ${b}<br>
+         Method: ${method.value}`;
+      result.classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>

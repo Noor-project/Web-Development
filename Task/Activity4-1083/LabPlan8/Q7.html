@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-500 font-sans m-0">
+
+    <!-- MAIN WHITE BOX -->
+    <div class="w-[900px] mx-auto my-12 bg-white p-8">
+
+        <!-- TOP IMAGE -->
+        <div>
+            <img src="Building.png" class="w-full h-72 object-cover"/>
+        </div>
+
+        <!-- CITY NAMES -->
+        <div class="flex justify-around my-5 font-bold text-base">
+            <div>Sydney</div>
+            <div>Melbourne</div>
+            <div>Los Angeles</div>
+            <div>London</div>
+        </div>
+
+        <!-- BOTTOM SECTION -->
+        <div class="flex mt-8 gap-6">
+
+            <!-- FORM -->
+            <div class="w-1/2 pr-5">
+                <h2 class="text-3xl font-bold mb-5">Get in Touch</h2>
+
+                <!-- Name -->
+                <div class="mb-3">
+                    <label class="block text-sm font-medium mb-1">Name</label>
+                    <input
+                        type="text"
+                        placeholder="Enter your Name"
+                        class="w-full px-3 py-2 border border-gray-300 rounded outline-none focus:border-red-500 transition-colors"
+                    />
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label class="block text-sm font-medium mb-1">Email</label>
+                    <input
+                        type="email"
+                        placeholder="Enter a valid email address"
+                        class="w-full px-3 py-2 border border-gray-300 rounded outline-none focus:border-red-500 transition-colors"
+                    />
+                </div>
+
+                <!-- Message -->
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">How can we help?</label>
+                    <textarea
+                        rows="5"
+                        class="w-full px-3 py-2 border border-gray-300 rounded outline-none focus:border-red-500 transition-colors resize-none"
+                    ></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    class="w-full py-3 bg-red-500 text-white font-bold rounded hover:bg-red-600 active:scale-95 transition-all duration-200"
+                >
+                    SUBMIT
+                </button>
+            </div>
+
+            <!-- MAP -->
+            <div class="w-1/2">
+                <img src="Map.jpg" class="w-full h-[350px] object-cover rounded"/>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

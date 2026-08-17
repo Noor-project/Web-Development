@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Q3 - Area of Triangle (Heron's)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen p-6">
+
+  <div class="flex gap-12 items-start">
+
+    <!-- Left: Form -->
+    <div>
+      <h2 class="font-bold text-base mb-4">JavaScript function to find the area of a triangle</h2>
+
+      <div class="space-y-3 mb-4">
+        <div class="flex items-center gap-2">
+          <label class="text-sm w-44">Enter the value of side 1:</label>
+          <input type="number" id="s1" class="border border-gray-400 px-2 py-1 w-36 text-sm outline-none"/>
+        </div>
+        <p id="err1" class="text-red-500 text-xs ml-44 hidden">⚠ Enter side 1.</p>
+
+        <div class="flex items-center gap-2">
+          <label class="text-sm w-44">Enter the value of side 2:</label>
+          <input type="number" id="s2" class="border border-gray-400 px-2 py-1 w-36 text-sm outline-none"/>
+        </div>
+        <p id="err2" class="text-red-500 text-xs ml-44 hidden">⚠ Enter side 2.</p>
+
+        <div class="flex items-center gap-2">
+          <label class="text-sm w-44">Enter the value of side 3:</label>
+          <input type="number" id="s3" class="border border-gray-400 px-2 py-1 w-36 text-sm outline-none"/>
+        </div>
+        <p id="err3" class="text-red-500 text-xs ml-44 hidden">⚠ Enter side 3.</p>
+      </div>
+
+      <button
+        onclick="calcArea()"
+        class="border border-gray-500 bg-gray-100 hover:bg-gray-200 px-5 py-1.5 text-sm rounded mb-3">
+        Click Here!
+      </button>
+
+      <p id="result" class="text-sm font-medium"></p>
+    </div>
+
+    <!-- Right: Triangle image + formula -->
+    <div class="text-center">
+      <!-- SVG Triangle -->
+      <svg width="160" height="130" viewBox="0 0 160 130">
+        <polygon points="80,5 10,125 150,125" fill="#4ade80" stroke="#16a34a" stroke-width="2"/>
+        <text x="78" y="2" font-size="12" text-anchor="middle" fill="black">b</text>
+        <text x="5"  y="130" font-size="12" fill="black">a</text>
+        <text x="148" y="130" font-size="12" fill="black">c</text>
+      </svg>
+      <p class="text-red-500 text-sm mt-2">Area of triangle= √s(s-a)(s-b)(s-c)</p>
+      <p class="text-sm mt-1">s = (a+b+c) / 2</p>
+    </div>
+
+  </div>
+
+  <script>
+    function calcArea() {
+      ['err1','err2','err3'].forEach(e => document.getElementById(e).classList.add('hidden'));
+
+      const s1 = document.getElementById('s1').value.trim();
+      const s2 = document.getElementById('s2').value.trim();
+      const s3 = document.getElementById('s3').value.trim();
+
+      let valid = true;
+      if (s1 === '' || isNaN(s1)) { document.getElementById('err1').classList.remove('hidden'); valid = false; }
+      if (s2 === '' || isNaN(s2)) { document.getElementById('err2').classList.remove('hidden'); valid = false; }
+      if (s3 === '' || isNaN(s3)) { document.getElementById('err3').classList.remove('hidden'); valid = false; }
+      if (!valid) return;
+
+      const a = parseFloat(s1), b = parseFloat(s2), c = parseFloat(s3);
+      const s = (a + b + c) / 2;
+      const area = Math.sqrt(s * (s-a) * (s-b) * (s-c));
+
+      const res = document.getElementById('result');
+      if (isNaN(area) || area <= 0) {
+        res.textContent = 'Invalid triangle sides.';
+        res.className = 'text-sm font-medium text-red-500';
+      } else {
+        res.textContent = `Area of Triangle: ${area.toFixed(2)}`;
+        res.className = 'text-sm font-medium text-gray-800';
+      }
+    }
+  </script>
+
+</body>
+</html>

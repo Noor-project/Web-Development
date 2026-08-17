@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col items-center mt-10">
+
+<input id="text" type="text" placeholder="Enter the string"
+class="border p-2 rounded w-64 mb-3">
+
+<input id="char" type="text" placeholder="Type single character"
+class="border p-2 rounded w-64 mb-3">
+
+<div class="flex gap-3">
+
+  <button onclick="countChar()"
+  class="bg-blue-500 text-white px-4 py-2 rounded">
+  OK
+  </button>
+
+  <button onclick="cancelInput()"
+  class="bg-red-500 text-white px-4 py-2 rounded">
+  Cancel
+  </button>
+
+</div>
+
+<script>
+function countChar() {
+    let str = document.getElementById("text").value;
+    let ch = document.getElementById("char").value;
+
+    if (str === "" || ch === "") {
+        alert("Fields cannot be empty!");
+        return;
+    }
+
+    if (ch.length !== 1) {
+        alert("Enter only ONE character");
+        return;
+    }
+
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === ch) {
+            count++;
+        }
+    }
+
+    alert("Occurrences: " + count);
+}
+
+function cancelInput() {
+    document.getElementById("text").value = "";
+    document.getElementById("char").value = "";
+}
+</script>
+
+</body>
+</html>

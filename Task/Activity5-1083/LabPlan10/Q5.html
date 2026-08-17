@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col items-center mt-10">
+
+<input id="text" type="text" placeholder="Enter the String"
+class="border p-2 rounded w-64 mb-4">
+
+<div class="flex gap-4">
+    <button onclick="checkPalindrome()"
+    class="bg-green-500 text-white px-4 py-2 rounded">
+    Check Palindrome
+    </button>
+
+    <button onclick="resetValue()"
+    class="bg-red-500 text-white px-4 py-2 rounded">
+    Reset Value
+    </button>
+</div>
+
+<script>
+function checkPalindrome() {
+    let str = document.getElementById("text").value;
+
+    if (str === "") {
+        alert("Field cannot be empty!");
+        return;
+    }
+
+    // Only string check (no numbers)
+    if (!isNaN(str)) {
+        alert("Only string values allowed!");
+        return;
+    }
+
+    let reversed = str.split("").reverse().join("");
+
+    if (str === reversed) {
+        alert("It is a Palindrome");
+    } else {
+        alert("Not a Palindrome");
+    }
+}
+
+function resetValue() {
+    document.getElementById("text").value = "";
+}
+</script>
+
+</body>
+</html>

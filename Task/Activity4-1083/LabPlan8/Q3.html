@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <form class="flex h-screen">
+
+        <!-- LEFT SIDE - Login Form -->
+        <div class="w-1/2 h-full bg-blue-900 text-white flex flex-col px-8 py-6">
+
+            <!-- Title -->
+            <h1 class="text-3xl font-bold text-center mt-4 mb-6">Log In</h1>
+
+            <!-- Username -->
+            <label class="mb-1 ml-1 text-sm font-medium">username*</label>
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter Your Username"
+                class="w-4/5 h-8 bg-transparent border border-white text-white placeholder-white outline-none px-2 mb-4"
+            />
+
+            <!-- Password -->
+            <label class="mb-1 ml-1 text-sm font-medium">password*</label>
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter Your Password"
+                class="w-4/5 h-8 bg-transparent border border-white text-white placeholder-white outline-none px-2 mb-4"
+            />
+
+            <!-- Remember Me -->
+            <div class="flex items-center gap-2 mb-4 ml-1">
+                <input
+                    type="checkbox"
+                    class="w-4 h-4 accent-yellow-400 cursor-pointer"
+                />
+                <span class="text-sm">Remember me</span>
+            </div>
+
+            <!-- Login Button -->
+            <button
+                type="submit"
+                class="w-4/5 h-10 bg-yellow-400 text-blue-900 font-bold text-base border border-white hover:bg-yellow-300 transition-colors duration-200 ml-1"
+            >
+                Login
+            </button>
+
+            <!-- Links -->
+            <div class="flex justify-between w-4/5 mt-4 ml-1">
+                <a href="#" class="text-white text-sm hover:underline">Forget Password?</a>
+                <a href="#" class="text-white text-sm hover:underline">Don't have an account?</a>
+            </div>
+
+            <!-- Footer Note -->
+            <p class="text-center text-sm mt-auto pt-10">Image from Freepik</p>
+
+        </div>
+
+        <!-- RIGHT SIDE - Image -->
+        <div class="w-1/2 h-full">
+            <img
+                src="Boy.jpg"
+                class="w-full h-full object-cover"
+            />
+        </div>
+
+    </form>
+
+</body>
+</html>

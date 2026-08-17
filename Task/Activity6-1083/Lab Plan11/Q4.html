@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Q4 - Decimal Converter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen">
+
+  <div class="border-2 border-blue-600 rounded p-8 w-96">
+
+    <!-- Input Row -->
+    <div class="flex items-center gap-4 mb-6">
+      <input
+        type="number"
+        id="decInput"
+        placeholder=""
+        class="border-2 border-gray-800 w-56 h-12 px-3 text-base outline-none"
+      />
+      <span id="inputErr" class="text-red-500 font-semibold text-sm hidden">Plz Enter positive value</span>
+    </div>
+
+    <!-- Radio Options -->
+    <div class="space-y-3 mb-8">
+      <label class="flex items-center gap-3 cursor-pointer">
+        <input type="radio" name="convType" value="binary" class="w-5 h-5 accent-black"/>
+        <span class="text-base font-medium">Decimal to Binary</span>
+      </label>
+      <label class="flex items-center gap-3 cursor-pointer">
+        <input type="radio" name="convType" value="hex" class="w-5 h-5 accent-black"/>
+        <span class="text-base font-medium">Decimal to Hexadecimal</span>
+      </label>
+    </div>
+    <p id="optErr" class="text-red-500 text-sm mb-3 hidden">⚠ Please select at least one option.</p>
+
+    <!-- Buttons -->
+    <div class="flex gap-4">
+      <button
+        onclick="convert()"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-2 rounded">
+        OK
+      </button>
+      <button
+        onclick="cancelForm()"
+        class="bg-gray-400 hover:bg-gray-500 text-white font-semibold px-6 py-2 rounded">
+        Cancel
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    function convert() {
+      const input = document.getElementById('decInput');
+      const inputErr = document.getElementById('inputErr');
+      const optErr = document.getElementById('optErr');
+
+      inputErr.classList.add('hidden');
+      optErr.classList.add('hidden');
+
+      const val = input.value.trim();
+      const n = parseInt(val);
+
+      if (val === '' || isNaN(n) || n < 0) {
+        inputErr.classList.remove('hidden');
+        return;
+      }
+
+      const selected = document.querySelector('input[name="convType"]:checked');
+      if (!selected) {
+        optErr.classList.remove('hidden');
+        return;
+      }
+
+      if (selected.value === 'binary') {
+        alert(`Decimal: ${n}\nBinary: ${n.toString(2)}`);
+      } else {
+        alert(`Decimal: ${n}\nHexadecimal: ${n.toString(16).toUpperCase()}`);
+      }
+    }
+
+    function cancelForm() {
+      document.getElementById('decInput').value = '';
+      document.querySelectorAll('input[name="convType"]').forEach(r => r.checked = false);
+      document.getElementById('inputErr').classList.add('hidden');
+      document.getElementById('optErr').classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>

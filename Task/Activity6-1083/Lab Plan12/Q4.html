@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Q4 - Circle Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen p-6">
+
+  <div class="flex gap-12 items-start">
+
+    <!-- Left: Form -->
+    <div class="w-64">
+      <input
+        type="number"
+        id="radius"
+        placeholder="Enter Value"
+        class="w-full border-2 border-blue-400 px-4 py-3 mb-4 text-sm outline-none focus:border-blue-600"
+      />
+      <p id="inputErr" class="text-red-500 text-xs mb-3 hidden">⚠ Please enter a radius value.</p>
+
+      <div class="space-y-2 mb-5">
+        <label class="flex items-center gap-2 cursor-pointer text-sm font-semibold">
+          <input type="checkbox" id="chkArea" checked class="accent-rose-700 w-4 h-4"/> Area of Circle
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer text-sm font-semibold">
+          <input type="checkbox" id="chkCirc" checked class="accent-rose-700 w-4 h-4"/> Circumference of Circle
+        </label>
+      </div>
+      <p id="optErr" class="text-red-500 text-xs mb-3 hidden">⚠ Select at least one option.</p>
+
+      <button
+        onclick="calculate()"
+        class="w-full bg-rose-700 hover:bg-rose-800 text-white font-bold py-3 rounded mb-4">
+        Calculate
+      </button>
+
+      <div id="result" class="hidden bg-gray-100 border border-gray-300 rounded p-3 text-sm space-y-1"></div>
+    </div>
+
+    <!-- Right: Circle diagram + formulas -->
+    <div class="text-sm space-y-2 pt-4">
+      <!-- SVG Circle -->
+      <svg width="160" height="160" viewBox="0 0 160 160" class="mx-auto block mb-2">
+        <circle cx="80" cy="80" r="68" fill="none" stroke="#22c55e" stroke-width="3"/>
+        <!-- diameter line (diagonal blue) -->
+        <line x1="28" y1="28" x2="132" y2="132" stroke="blue" stroke-width="1.5"/>
+        <!-- radius line (red) -->
+        <line x1="80" y1="80" x2="132" y2="80" stroke="red" stroke-width="1.5"/>
+        <text x="60" y="100" font-size="10" fill="blue">diameter</text>
+        <text x="95" y="75" font-size="10" fill="red">radius</text>
+      </svg>
+      <p><span class="text-black">Area of a circle</span><br/>= π × <span class="text-red-500 font-bold">radius²</span></p>
+      <p><span class="text-black">Circumference of a circle</span><br/>= π × <span class="text-blue-600 font-bold">diameter</span></p>
+      <p>remember that the<br/><span class="text-blue-600 font-bold">diameter = 2 × radius</span></p>
+    </div>
+
+  </div>
+
+  <script>
+    function calculate() {
+      const inputErr = document.getElementById('inputErr');
+      const optErr   = document.getElementById('optErr');
+      const result   = document.getElementById('result');
+
+      inputErr.classList.add('hidden');
+      optErr.classList.add('hidden');
+      result.classList.add('hidden');
+
+      const val = document.getElementById('radius').value.trim();
+      if (val === '' || isNaN(val) || parseFloat(val) <= 0) {
+        inputErr.classList.remove('hidden');
+        return;
+      }
+
+      const chkArea = document.getElementById('chkArea').checked;
+      const chkCirc = document.getElementById('chkCirc').checked;
+      if (!chkArea && !chkCirc) { optErr.classList.remove('hidden'); return; }
+
+      const r = parseFloat(val);
+      let html = `<p class="font-semibold">Radius = ${r}</p>`;
+
+      if (chkArea) {
+        const area = (Math.PI * r * r).toFixed(4);
+        html += `<p>Area = π × r² = <strong>${area}</strong></p>`;
+      }
+      if (chkCirc) {
+        const circ = (Math.PI * 2 * r).toFixed(4);
+        html += `<p>Circumference = π × 2r = <strong>${circ}</strong></p>`;
+      }
+
+      result.innerHTML = html;
+      result.classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>

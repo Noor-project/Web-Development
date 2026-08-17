@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find the Smallest Number</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .form-box {
+      border: 3px solid #1a3cbe;
+      background: white;
+      padding: 30px 30px 30px 30px;
+      width: 420px;
+      position: relative;
+    }
+
+    h2 {
+      color: #1a3cbe;
+      font-size: 22px;
+      margin: 0 0 15px 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 3px solid #aaa;
+      margin-bottom: 20px;
+    }
+
+    .form-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .fields {
+      flex: 1;
+    }
+
+    .field-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .field-row label {
+      width: 130px;
+      font-size: 14px;
+    }
+
+    .field-row input {
+      width: 160px;
+      padding: 5px 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .js-logo {
+      background: #f0c800;
+      color: black;
+      font-size: 48px;
+      font-weight: bold;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .btn-find {
+      background: #3cb043;
+      color: white;
+      border: none;
+      padding: 10px 30px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-left: 130px;
+    }
+
+    .btn-find:hover {
+      background: #2d8a34;
+    }
+
+    /* Alert box on the right */
+    .alert-box {
+      background: white;
+      border: 1px solid #aaa;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.25);
+      padding: 20px 24px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .alert-box.hidden {
+      visibility: hidden;
+    }
+
+    .alert-box p {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 0 16px 0;
+    }
+
+    .alert-box button {
+      border: 1px solid #aaa;
+      background: white;
+      padding: 4px 20px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .alert-box button:hover {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Form -->
+  <div class="form-box">
+    <h2>Find the smallest number</h2>
+    <hr>
+    <div class="form-inner">
+      <div class="fields">
+        <div class="field-row">
+          <label>Enter number 1:</label>
+          <input type="number" id="num1" placeholder="Enter only Numeric Value">
+        </div>
+        <div class="field-row">
+          <label>Enter number 2:</label>
+          <input type="number" id="num2" placeholder="Enter only Numeric Value">
+        </div>
+        <div class="field-row">
+          <label>Enter number 3:</label>
+          <input type="number" id="num3" placeholder="Enter only Numeric Value">
+        </div>
+      </div>
+      <div class="js-logo">JS</div>
+    </div>
+    <button class="btn-find" onclick="findSmallest()">Find !</button>
+  </div>
+
+  <!-- Alert Box on the RIGHT -->
+  <div class="alert-box hidden" id="alertBox">
+    <p id="alertMessage"></p>
+    <button onclick="closeAlert()">OK</button>
+  </div>
+
+</div>
+
+<script>
+  function findSmallest() {
+    const n1 = parseFloat(document.getElementById('num1').value);
+    const n2 = parseFloat(document.getElementById('num2').value);
+    const n3 = parseFloat(document.getElementById('num3').value);
+
+    if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+      showAlert("Please enter valid numeric values in all fields.");
+      return;
+    }
+
+    if (n3 >= n2) {
+      showAlert("Third value must be smaller than second value.");
+      return;
+    }
+
+    let smallest;
+    if (n1 <= n2 && n1 <= n3) {
+      smallest = n1;
+    } else if (n2 <= n1 && n2 <= n3) {
+      smallest = n2;
+    } else {
+      smallest = n3;
+    }
+
+    showAlert(smallest + " is the smallest number");
+  }
+
+  function showAlert(message) {
+    document.getElementById('alertMessage').textContent = message;
+    document.getElementById('alertBox').classList.remove('hidden');
+  }
+
+  function closeAlert() {
+    document.getElementById('alertBox').classList.add('hidden');
+  }
+</script>
+
+</body>
+</html>

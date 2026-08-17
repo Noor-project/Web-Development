@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find the Largest Number</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Focus style for input fields */
+    .glow-input:focus {
+      outline: 2px solid #1010d8 !important;
+      border-color: #1010d8;
+      box-shadow: 0 0 0 3px rgba(16, 16, 216, 0.3), 0 0 12px rgba(16, 16, 216, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <!-- Container similar to the example -->
+  <div class="border-4 border-blue-700 rounded-lg p-8 w-full max-w-md bg-white shadow-lg">
+    <h2 class="text-3xl font-bold text-center mb-6 text-blue-700">Find the largest number</h2>
+    <hr class="mb-6 border-gray-300" />
+
+    <div class="mb-4">
+      <label class="block mb-1 font-semibold">Enter number 1:</label>
+      <input
+        id="n1"
+        type="text"
+        placeholder="Enter only Numeric Value"
+        class="glow-input w-full border-2 border-gray-300 rounded px-3 py-2 text-lg"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1 font-semibold">Enter number 2:</label>
+      <input
+        id="n2"
+        type="text"
+        placeholder="Enter only Numeric Value"
+        class="glow-input w-full border-2 border-gray-300 rounded px-3 py-2 text-lg"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1 font-semibold">Enter number 3:</label>
+      <input
+        id="n3"
+        type="text"
+        placeholder="Enter only Numeric Value"
+        class="glow-input w-full border-2 border-gray-300 rounded px-3 py-2 text-lg"
+      />
+    </div>
+
+    <div id="result" class="mt-4 text-center font-bold text-xl hidden"></div>
+
+    <button
+      onclick="findLargest()"
+      class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg mt-6 text-lg"
+    >
+      Find !
+    </button>
+  </div>
+
+  <script>
+    function findLargest() {
+      var a = document.getElementById('n1').value.trim();
+      var b = document.getElementById('n2').value.trim();
+      var c = document.getElementById('n3').value.trim();
+
+      if (a === '' || b === '' || c === '') {
+        alert('Please fill all fields!');
+        return;
+      }
+      if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        alert('Enter numeric values only!');
+        return;
+      }
+
+      a = parseFloat(a);
+      b = parseFloat(b);
+      c = parseFloat(c);
+      var largest = Math.max(a, b, c);
+
+      var result = document.getElementById('result');
+      result.textContent = 'Largest Number is: ' + largest;
+      result.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

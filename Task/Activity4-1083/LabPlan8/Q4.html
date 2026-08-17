@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup / Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-white p-6">
+
+    <div class="flex flex-wrap gap-6 justify-start items-start p-4">
+
+        <!-- SIGNUP FORM (LEFT) -->
+        <div class="bg-[#f2b632] p-8 rounded">
+            <div class="w-80 bg-gray-200 p-5 rounded">
+
+                <!-- Logo -->
+                <h3 class="text-center border-2 border-dashed border-[#f2b632] p-3 mb-4 font-bold">
+                    Your Logo Here
+                </h3>
+
+                <!-- First Name -->
+                <p class="mb-1 text-sm font-medium">First name *</p>
+                <input type="text"
+                    class="w-full h-8 px-2 border border-[#f2b632] bg-white outline-none mb-3"/>
+
+                <!-- Last Name -->
+                <p class="mb-1 text-sm font-medium">Last name *</p>
+                <input type="text"
+                    class="w-full h-8 px-2 border border-[#f2b632] bg-white outline-none mb-3"/>
+
+                <!-- Email -->
+                <p class="mb-1 text-sm font-medium">Email address *</p>
+                <input type="text"
+                    class="w-full h-8 px-2 border border-[#f2b632] bg-white outline-none mb-3"/>
+
+                <!-- Password -->
+                <p class="mb-1 text-sm font-medium">Password *</p>
+                <input type="password"
+                    class="w-full h-8 px-2 border border-[#f2b632] bg-white outline-none mb-3"/>
+
+                <!-- Again Password -->
+                <p class="mb-1 text-sm font-medium">Again password *</p>
+                <input type="password"
+                    class="w-full h-8 px-2 border border-[#f2b632] bg-white outline-none mb-4"/>
+
+                <!-- Bottom Row -->
+                <div class="flex justify-between items-center mt-2">
+                    <span class="text-[#f2b632] text-sm font-medium">Have an account</span>
+                    <button type="button"
+                        class="bg-[#f2b632] text-white border-none px-5 py-2 hover:bg-yellow-500 transition-colors duration-200">
+                        Signup
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- LOGIN FORM (RIGHT) -->
+        <div class="bg-[#f2b632] p-8 rounded">
+            <div class="w-80 bg-gray-200 p-5 rounded">
+
+                <!-- Logo -->
+                <h3 class="text-center border-2 border-dashed border-[#f2b632] p-3 mb-4 font-bold">
+                    Your Logo Here
+                </h3>
+
+                <!-- Username -->
+                <p class="mb-1 text-sm font-medium">Username or email address *</p>
+                <input type="text"
+                    class="w-full h-8 px-2 border border-[#f2b632] bg-white outline-none mb-3"/>
+
+                <!-- Password -->
+                <p class="mb-1 text-sm font-medium">Password *</p>
+                <input type="password"
+                    class="w-full h-8 px-2 border border-[#f2b632] bg-white outline-none mb-4"/>
+
+                <!-- Bottom Row -->
+                <div class="flex justify-between items-center mt-2">
+                    <span class="text-[#f2b632] text-sm font-medium leading-6">
+                        Forgot password?<br/>Create an account
+                    </span>
+                    <button type="button"
+                        class="bg-[#f2b632] text-white border-none px-5 py-2 hover:bg-yellow-500 transition-colors duration-200">
+                        Login
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

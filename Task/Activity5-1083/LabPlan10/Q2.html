@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Array Comparison</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-xl shadow-md w-96">
+    <h2 class="text-2xl font-semibold mb-4 text-center">Array Comparison</h2>
+
+    <button onclick="getAndCompareArrays()"
+      class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg mb-4">
+      Enter 10 Values & Compare
+    </button>
+
+    <!-- Shows both array values -->
+    <div id="arrays" class="text-sm text-gray-600 mb-3"></div>
+
+    <!-- WITHOUT FUNCTION result -->
+    <div class="mb-2">
+      <span class="font-semibold text-gray-700">Without Function: </span>
+      <span id="result-without" class="font-medium"></span>
+    </div>
+
+    <!-- WITH FUNCTION result -->
+    <div>
+      <span class="font-semibold text-gray-700">With Function: </span>
+      <span id="result-with" class="font-medium"></span>
+    </div>
+  </div>
+
+  <script>
+
+    // ─── Get 10 values via prompt, split 5 by 5 ───
+    function getArrays() {
+      const arr1 = [];
+      const arr2 = [];
+
+      for (let i = 0; i < 10; i++) {
+        let value;
+        while (true) {
+          value = prompt(`Enter value ${i + 1} of 10:`);
+          if (value === null || value.trim() === '') {
+            alert('Please enter a value!');
+            continue;
+          }
+          if (!/^-?\d+(\.\d+)?$/.test(value.trim())) {
+            alert('Enter a valid number!');
+            continue;
+          }
+          break;
+        }
+        value = parseFloat(value.trim());
+        if (i < 5) {
+          arr1.push(value);   // first 5 → array1
+        } else {
+          arr2.push(value);   // last 5  → array2
+        }
+      }
+      return { arr1, arr2 };
+    }
+
+    // ════════════════════════════════
+    // METHOD 1: WITH FUNCTION
+    // ════════════════════════════════
+    function compareArrays(arr1, arr2) {
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) return false;
+      }
+      return true;
+    }
+
+    // ════════════════════════════════
+    // MAIN: runs both methods
+    // ════════════════════════════════
+    function getAndCompareArrays() {
+      const { arr1, arr2 } = getArrays();
+
+      // Show arrays on screen
+      document.getElementById('arrays').innerHTML =
+        `<b>Array 1:</b> [${arr1}] <br> <b>Array 2:</b> [${arr2}]`;
+
+      // ── WITHOUT FUNCTION ──
+      let isSame = true;
+      for (let i = 0; i < 5; i++) {
+        if (arr1[i] !== arr2[i]) {
+          isSame = false;
+          break;
+        }
+      }
+      const withoutResult = document.getElementById('result-without');
+      if (isSame) {
+        withoutResult.textContent = 'The arrays have the same elements.';
+        withoutResult.className = 'font-medium text-green-600';
+      } else {
+        withoutResult.textContent = 'The arrays have different elements.';
+        withoutResult.className = 'font-medium text-red-500';
+      }
+
+      // ── WITH FUNCTION ──
+      const areEqual = compareArrays(arr1, arr2);
+      const withResult = document.getElementById('result-with');
+      if (areEqual) {
+        withResult.textContent = 'The arrays have the same elements.';
+        withResult.className = 'font-medium text-green-600';
+      } else {
+        withResult.textContent = 'The arrays have different elements.';
+        withResult.className = 'font-medium text-red-500';
+      }
+    }
+
+  </script>
+</body>
+</html>

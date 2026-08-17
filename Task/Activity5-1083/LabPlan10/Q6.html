@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-lg shadow-md border border-blue-400 w-full max-w-lg">
+        <input 
+            type="number" 
+            id="numberInput" 
+            placeholder="Enter Only Numeric Value" 
+            class="w-full p-3 border border-gray-300 rounded mb-6 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+
+        <div class="flex justify-between gap-4">
+            <button 
+                onclick="checkPalindrome()" 
+                class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded transition duration-200 w-1/2">
+                Check Palindrome
+            </button>
+            
+            <button 
+                onclick="resetFields()" 
+                class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded transition duration-200 w-1/2">
+                Reset Value
+            </button>
+        </div>
+
+        <div id="message" class="mt-6 text-center font-bold text-lg"></div>
+    </div>
+
+    <script>
+        function checkPalindrome() {
+            const input = document.getElementById('numberInput');
+            const messageElement = document.getElementById('message');
+            const value = input.value;
+
+            // 1. Check for empty fields (without using 'required' attribute)
+            if (value === "") {
+                messageElement.style.color = "orange";
+                messageElement.innerText = "Please enter a number first!";
+                return;
+            }
+
+            // 2. Check for only positive values
+            const num = parseFloat(value);
+            if (num < 0) {
+                messageElement.style.color = "red";
+                messageElement.innerText = "Please enter a positive value.";
+                return;
+            }
+
+            // 3. Palindrome Logic
+            const strValue = value.toString();
+            const reversedValue = strValue.split('').reverse().join('');
+
+            if (strValue === reversedValue) {
+                messageElement.style.color = "green";
+                messageElement.innerText = `Yes! ${value} is a Palindrome.`;
+            } else {
+                messageElement.style.color = "red";
+                messageElement.innerText = `No! ${value} is not a Palindrome.`;
+            }
+        }
+
+        function resetFields() {
+            document.getElementById('numberInput').value = "";
+            const messageElement = document.getElementById('message');
+            messageElement.innerText = "";
+        }
+    </script>
+</body>
+</html>
